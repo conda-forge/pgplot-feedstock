@@ -20,20 +20,20 @@ source:
     - osx.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [win]
 
 requirements:
   build:
     - gcc  # [osx]
-    - libgfortran  # [unix]
+    - libgfortran  # [linux]
     - libpng
     - toolchain
     - xorg-libx11
     - zlib
   run:
-    - libgfortran  # [linux]
+    - libgfortran
     - libpng
     - xorg-libx11
     - zlib
