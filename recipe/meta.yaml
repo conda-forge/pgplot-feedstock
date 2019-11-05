@@ -50,6 +50,7 @@ test:
 about:
   home: http://www.astro.caltech.edu/~tjp/pgplot/
   license: non-commercial use only
+  license_file: copyright.notice
   summary: 'A FORTRAN plotting library'
 
 extra:
