@@ -29,7 +29,7 @@
  	rm -f cpg*.c
  	ar ru libcpgplot.a cpg*.o
  	$(RANLIB) libcpgplot.a
-+	test -n "$(SHARED_CPG_LD)" && $(SHARED_CPG_LD) cpg*.o $(SHARED_LIB_LIBS)
++	test -n "$(SHARED_CPG_LD)" && $(SHARED_CPG_LD) cpg*.o $(SHARED_LIB) $(SHARED_LIB_LIBS)
  	rm -f cpg*.o
  
  cpgdemo: cpgplot.h $(SRC)/cpg/cpgdemo.c libcpgplot.a
