@@ -1,6 +1,6 @@
 --- /dev/null	2015-12-19 20:34:07.000000000 -0800
 +++ sys_linux/actually_osx.conf	2015-12-19 20:36:07.000000000 -0800
-@@ -0,0 +1,24 @@
+@@ -0,0 +1,26 @@
 +XINCL=""
 +MOTIF_INCL="$XINCL"
 +ATHENA_INCL="$XINCL"
@@ -20,7 +20,9 @@
 +TK_LIBS=""
 +RANLIB="ranlib"
 +SHARED_LIB="libpgplot.dylib"
++SHARED_CPG_LIB="libcpgplot.dylib"
 +SHARED_LD="$FC -shared -m64 -Wl,-rpath,$PREFIX/lib -o $SHARED_LIB"
++SHARED_CPG_LD="$CC -shared -m64 -Wl,-rpath,$PREFIX/lib -o $SHARED_CPG_LIB"
 +SHARED_LIB_LIBS="-L$PREFIX/lib -lX11 -lpng"
 +MCOMPL=""
 +MFLAGC=""

@@ -1,0 +1,35 @@
+--- makemake.orig	2018-10-10 15:18:03.635518000 -0600
++++ makemake	2019-11-05 10:58:44.238701000 -0700
+@@ -658,6 +658,8 @@
+ #
+ SHARED_LIB=$SHARED_LIB
+ SHARED_LD=$SHARED_LD
++SHARED_CPG_LIB=$SHARED_CPG_LIB
++SHARED_CPG_LD=$SHARED_CPG_LD
+ #
+ # The libraries that the shared PGPLOT library depends upon.
+ # This is for systems that allow one to specify what libraries
+@@ -1030,7 +1032,7 @@
+ x2driv.o figdisp_comm.o: $(DRVDIR)/commands.h
+ 
+ 
+-cpg:	libcpgplot.a cpgplot.h cpgdemo 
++cpg:	libcpgplot.a $(SHARED_CPG_LIB) cpgplot.h cpgdemo 
+ 	@echo ' '
+ 	@echo '*** Finished compilation of the C PGPLOT wrapper library ***'
+ 	@echo ' '
+@@ -1042,12 +1044,13 @@
+ pgbind: $(SRC)/cpg/pgbind.c
+ 	$(CCOMPL) $(CFLAGC) $(SRC)/cpg/pgbind.c -o pgbind
+ 
+-libcpgplot.a cpgplot.h: $(PG_SOURCE) pgbind 
++libcpgplot.a $(SHARED_CPG_LIB) cpgplot.h: $(PG_SOURCE) pgbind 
+ 	./pgbind $(PGBIND_FLAGS) -h -w $(PG_SOURCE)
+ 	$(CCOMPL) -c $(CFLAGC) cpg*.c
+ 	rm -f cpg*.c
+ 	ar ru libcpgplot.a cpg*.o
+ 	$(RANLIB) libcpgplot.a
++	test -n "$(SHARED_CPG_LD)" && $(SHARED_CPG_LD) cpg*.o $(SHARED_LIB_LIBS)
+ 	rm -f cpg*.o
+ 
+ cpgdemo: cpgplot.h $(SRC)/cpg/cpgdemo.c libcpgplot.a
