@@ -15,12 +15,13 @@ source:
     - drivers.patch
     - gfortran.patch
     - png-setjmp.patch
+    - sharedcpg.patch
     - prefix.patch
     - late-binding-drivers.patch
     - osx.patch  # [osx]
 
 build:
-  number: 1004
+  number: 1005
   detect_binary_files_with_prefix: true
   skip: true  # [win]
 
@@ -49,6 +50,7 @@ test:
 about:
   home: http://www.astro.caltech.edu/~tjp/pgplot/
   license: non-commercial use only
+  license_file: copyright.notice
   summary: 'A FORTRAN plotting library'
 
 extra:

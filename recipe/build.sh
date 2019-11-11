@@ -29,7 +29,7 @@ make all libcpgplot.a
 
 mkdir -p $PREFIX/bin $PREFIX/lib $PREFIX/include/pgplot $PREFIX/share/pgplot
 cp -a pgxwin_server $PREFIX/bin/
-cp -a libcpgplot.a libpgplot.a libpgplot$SHLIB_EXT $PREFIX/lib/
+cp -a libcpgplot.a libpgplot.a libpgplot$SHLIB_EXT libcpgplot$SHLIB_EXT $PREFIX/lib/
 cp -a grfont.dat rgb.txt $PREFIX/share/pgplot/
 cp -a cpgplot.h grpckg1.inc pgplot.inc $PREFIX/include/pgplot/
 

@@ -1,6 +1,6 @@
 --- sys_linux/gfortran_gcc.conf.orig	2015-05-08 15:56:11.249515977 -0400
 +++ sys_linux/gfortran_gcc.conf	2015-05-08 15:57:48.302673286 -0400
-@@ -0,0 +1,24 @@
+@@ -0,0 +1,26 @@
 +XINCL=""
 +MOTIF_INCL="$XINCL"
 +ATHENA_INCL="$XINCL"
@@ -20,7 +20,9 @@
 +TK_LIBS=
 +RANLIB="ranlib"
 +SHARED_LIB="libpgplot.so"
++SHARED_CPG_LIB="libcpgplot.so"
 +SHARED_LD="$CC -shared -o $SHARED_LIB"
++SHARED_CPG_LD="$CC -shared -o $SHARED_CPG_LIB"
 +SHARED_LIB_LIBS="-L$PREFIX/lib -lpng -lgfortran"
 +MCOMPL=""
 +MFLAGC=""
