@@ -23,7 +23,7 @@
 +SHARED_CPG_LIB="libcpgplot.so"
 +SHARED_LD="$CC -shared -o $SHARED_LIB"
 +SHARED_CPG_LD="$CC -shared -o $SHARED_CPG_LIB"
-+SHARED_LIB_LIBS="-L$PREFIX/lib -lpng -lgfortran"
++SHARED_LIB_LIBS="-L$PREFIX/lib -lX11 -lpng -lgfortran"
 +MCOMPL=""
 +MFLAGC=""
 +SYSDIR="$SYSDIR"
