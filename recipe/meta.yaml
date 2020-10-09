@@ -9,7 +9,7 @@ package:
 
 source:
   fn: {{ name }}{{ majmin }}.tar.gz
-  url: http://fossies.org/unix/misc/old/{{ name }}{{ majmin }}.tar.gz
+  url: ftp://ftp.astro.caltech.edu/pub/pgplot/{{ name }}{{ majmin }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - drivers.patch
@@ -21,8 +21,7 @@ source:
     - osx.patch  # [osx]
 
 build:
-  number: 1006
-  detect_binary_files_with_prefix: true
+  number: 1007
   skip: true  # [win]
 
 requirements:
@@ -49,7 +48,7 @@ test:
 
 about:
   home: http://www.astro.caltech.edu/~tjp/pgplot/
-  license: non-commercial use only
+  license: LicenseREf-pgplot
   license_file: copyright.notice
   summary: 'A FORTRAN plotting library'
 
