@@ -19,9 +19,10 @@ source:
     - prefix.patch
     - late-binding-drivers.patch
     - osx.patch  # [osx]
+    - cross-compile-makemake.patch  # [build_platform != target_platform]
 
 build:
-  number: 1007
+  number: 1008
   skip: true  # [win]
 
 requirements:

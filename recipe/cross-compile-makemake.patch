@@ -1,0 +1,28 @@
+--- makemake.orig	2021-01-10 16:42:14.000000000 -0800
++++ makemake	2021-01-10 21:51:56.000000000 -0800
+@@ -619,6 +619,7 @@
+ XMDIR=$DRVDIR/xmotif
+ XADIR=$DRVDIR/xathena
+ TKDIR=$DRVDIR/xtk
++SRC_RUN=$SRC_RUN
+ #
+ # Fortran compiler and compilation flags
+ #
+@@ -896,7 +897,7 @@
+     echo "	\$(FCOMPL) \$(FFLAGC) -o pgpack \$(FNTDIR)/pgpack.f"
+   fi
+   echo "	rm -f grfont.dat"
+-  echo "	./pgpack <\$(FNTDIR)/grfont.txt"
++  echo "	\$(SRC_RUN)pgpack <\$(FNTDIR)/grfont.txt"
+   echo "	rm -f pgpack"
+ ) >> makefile
+ 
+@@ -1049,7 +1050,7 @@
+ 	$(CCOMPL) $(CFLAGC) $(SRC)/cpg/pgbind.c -o pgbind
+ 
+ libcpgplot.a $(SHARED_CPG_LIB) cpgplot.h: $(PG_SOURCE) pgbind 
+-	./pgbind $(PGBIND_FLAGS) -h -w $(PG_SOURCE)
++	$(SRC_RUN)pgbind $(PGBIND_FLAGS) -h -w $(PG_SOURCE)
+ 	$(CCOMPL) -c $(CFLAGC) cpg*.c
+ 	rm -f cpg*.c
+ 	ar ru libcpgplot.a cpg*.o
