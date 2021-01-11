@@ -5,7 +5,7 @@ set -ex
 # Standardize the environment variables used across the different toolchains.
 # We need to ensure that $FC and $FFLAGS are set, which not all toolchains do.
 
-if [ -n "$OSX_ARCH" ] ; then
+if [[ $target_platform == osx-* ]]; then
     subtype=actually_osx
 
     if [ "$c_compiler" = toolchain_c ] ; then
@@ -19,6 +19,26 @@ else
         FC=gfortran
         FFLAGS="-g -O -fno-automatic -Wall -fPIC -m$ARCH"
     fi
+fi
+
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+  (
+    mkdir -p native-build/bin
+    pushd native-build/bin
+
+    # MACOSX_DEPLOYMENT_TARGET is for the target_platform and not for build_platform
+    unset MACOSX_DEPLOYMENT_TARGET
+
+    $FC_FOR_BUILD -L $BUILD_PREFIX/lib -o pgpack ../../fonts/pgpack.f
+    $CC_FOR_BUILD ../../cpg/pgbind.c -o pgbind
+
+    popd
+  )
+  export PATH=`pwd`/native-build/bin:$PATH
+  export SRC_RUN=
+  export FFLAGS=$FFLAGS+" -L$PREFIX/lib"
+else
+  export SRC_RUN=./
 fi
 
 ./makemake . linux $subtype
