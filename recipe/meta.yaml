@@ -29,6 +29,7 @@ requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - make
   host:
     - libpng
     - xorg-libx11
