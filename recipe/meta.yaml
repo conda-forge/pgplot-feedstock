@@ -18,6 +18,7 @@ source:
     - sharedcpg.patch
     - prefix.patch
     - late-binding-drivers.patch
+    - deprecations.patch
     - osx.patch  # [osx]
     - cross-compile-makemake.patch  # [build_platform != target_platform]
 

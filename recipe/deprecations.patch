@@ -1,0 +1,15 @@
+Fix build errors relating to the age and unmaintainedness of the codebase.
+
+diff --git a/sys/grfileio.c b/sys/grfileio.c
+index b439b97..f00e7ad 100644
+--- a/sys/grfileio.c
++++ b/sys/grfileio.c
+@@ -20,6 +20,8 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
++#include <string.h>
++#include <unistd.h>
+ 
+ #ifdef PG_PPU
+ #define GROFIL grofil_
