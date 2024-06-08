@@ -22,13 +22,14 @@ source:
     - cross-compile-makemake.patch  # [build_platform != target_platform]
 
 build:
-  number: 1008
+  number: 1009
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - make
   host:
     - libpng
@@ -48,7 +49,7 @@ test:
 
 about:
   home: http://www.astro.caltech.edu/~tjp/pgplot/
-  license: LicenseREf-pgplot
+  license: LicenseRef-pgplot
   license_file: copyright.notice
   summary: 'A FORTRAN plotting library'
 
