@@ -14,15 +14,16 @@ index b439b97..f00e7ad 100644
  #ifdef PG_PPU
  #define GROFIL grofil_
 diff --git a/sys/grtermio.c b/sys/grtermio.c
-index ab3498d..a7956f9 100644
+index ab3498d..499ca1b 100644
 --- a/sys/grtermio.c
 +++ b/sys/grtermio.c
-@@ -7,6 +7,8 @@
+@@ -7,6 +7,9 @@
  
  #include <stdio.h>
  #include <termios.h>
 +#include <string.h>
 +#include <unistd.h>
++#include <fcntl.h>
  
  #ifdef PG_PPU
  #define GROTER groter_
