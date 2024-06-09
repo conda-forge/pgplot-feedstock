@@ -1,0 +1,31 @@
+Avoid non-ASCII characters in source for macOS awk in `makedoc`.
+
+NB, be careful when editing this file in a modern editor, since the whole problem
+is that the input is not in UTF-8. It appears to be Windows 1252.
+
+diff --git a/src/pgaxis.f b/src/pgaxis.f
+index eb4da07..a4f3f75 100644
+--- a/src/pgaxis.f
++++ b/src/pgaxis.f
+@@ -61,7 +61,7 @@ C  FMIN   (input)  : length of minor tick marks, as fraction of major.
+ C  DISP   (input)  : displacement of baseline of tick labels to
+ C                    right of axis, in units of the character height.
+ C  ORIENT (input)  : orientation of label text, in degrees; angle between
+-C                    baseline of text and direction of axis (0-360°).
++C                    baseline of text and direction of axis (0-360 deg).
+ C--
+ C 25-Mar-1997 - new routine [TJP].
+ C-----------------------------------------------------------------------
+diff --git a/src/pgtick.f b/src/pgtick.f
+index 800214a..c5d4148 100644
+--- a/src/pgtick.f
++++ b/src/pgtick.f
+@@ -27,7 +27,7 @@ C                    in units of the character height.
+ C  DISP   (input)  : displacement of label text to
+ C                    right of axis, in units of the character height.
+ C  ORIENT (input)  : orientation of label text, in degrees; angle between
+-C                    baseline of text and direction of axis (0-360°).
++C                    baseline of text and direction of axis (0-360 deg).
+ C  STR    (input)  : text of label (may be blank).
+ C--
+ C 25-Mar-1997 - new routine [TJP].

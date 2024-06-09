@@ -19,6 +19,7 @@ source:
     - prefix.patch
     - late-binding-drivers.patch
     - deprecations.patch
+    - ascii.patch
     - osx.patch  # [osx]
     - cross-compile-makemake.patch  # [build_platform != target_platform]
 
