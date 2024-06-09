@@ -48,7 +48,7 @@ test:
     - test -f $PREFIX/lib/libpgplot.a  # [unix]
     - test -f $PREFIX/lib/libpgplot.so  # [linux]
     - test -f $PREFIX/lib/libpgplot.dylib  # [osx]
-    - $CC -o compile_test $(pkg-config --cflags cpgplot) $RECIPE_DIR/compile_test.c $(pkg-config --libs cpgplot) && ./compile_test
+    - $CC -o compile_test $CFLAGS $(pkg-config --cflags cpgplot) $RECIPE_DIR/compile_test.c $LDFLAGS $(pkg-config --libs cpgplot) && ./compile_test
   requires:
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
