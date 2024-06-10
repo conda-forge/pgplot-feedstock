@@ -34,7 +34,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 
     popd
   )
-  export PATH=`pwd`/native-build/bin:$PATH
+  export PATH=$(pwd)/native-build/bin:$PATH
   export SRC_RUN=
   export FFLAGS=$FFLAGS+" -L$PREFIX/lib"
 else
@@ -53,5 +53,7 @@ cp -a libcpgplot.a libpgplot.a libpgplot$SHLIB_EXT libcpgplot$SHLIB_EXT $PREFIX/
 cp -a grfont.dat rgb.txt $PREFIX/share/pgplot/
 cp -a cpgplot.h grpckg1.inc pgplot.inc $PREFIX/include/pgplot/
 
-# NOTE: do not delete .a files -- that's currently the only way we distribute
-# libcpgplot. Would be nice to fix that.
+mkdir -p $PREFIX/lib/pkgconfig
+for pctmpl in pgplot cpgplot ; do
+  sed -e "s|@P@|$PREFIX|g" <$RECIPE_DIR/$pctmpl.pc.in >$PREFIX/lib/pkgconfig/$pctmpl.pc
+done

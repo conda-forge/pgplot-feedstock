@@ -18,17 +18,20 @@ source:
     - sharedcpg.patch
     - prefix.patch
     - late-binding-drivers.patch
+    - deprecations.patch
+    - ascii.patch
     - osx.patch  # [osx]
     - cross-compile-makemake.patch  # [build_platform != target_platform]
 
 build:
-  number: 1008
+  number: 1009
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - make
   host:
     - libpng
@@ -45,10 +48,15 @@ test:
     - test -f $PREFIX/lib/libpgplot.a  # [unix]
     - test -f $PREFIX/lib/libpgplot.so  # [linux]
     - test -f $PREFIX/lib/libpgplot.dylib  # [osx]
+    - $CC -o compile_test $CFLAGS $(pkg-config --cflags cpgplot) $RECIPE_DIR/compile_test.c $LDFLAGS $(pkg-config --libs cpgplot) && ./compile_test
+  requires:
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
+    - pkg-config
 
 about:
   home: http://www.astro.caltech.edu/~tjp/pgplot/
-  license: LicenseREf-pgplot
+  license: LicenseRef-pgplot
   license_file: copyright.notice
   summary: 'A FORTRAN plotting library'
 
